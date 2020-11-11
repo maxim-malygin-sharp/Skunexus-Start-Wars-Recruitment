@@ -1,13 +1,22 @@
-import './App.css';
+import "./App.css";
 
-import Planets from '../Planets';
+import { Route, Switch } from "react-router-dom";
+
+import { routes } from "../../utils/routes";
 
 function App() {
   return (
-    <div className="App">
-      <h1>Star Wars Planets</h1>
-      <Planets />
-    </div>
+    <Switch>
+      {routes.map((route) => {
+        const Component = route.Component;
+        const props = route.props;
+        return (
+          <Route path={route.path} exact={route.exact}>
+            <Component {...props} />
+          </Route>
+        );
+      })}
+    </Switch>
   );
 }
 
