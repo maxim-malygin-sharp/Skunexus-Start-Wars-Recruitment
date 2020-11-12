@@ -26,7 +26,6 @@ function Films({ planetInfo }) {
       "release_date",
     ],
     values: values ?? [],
-    actions: [{ label: "Back", action: () => history.push("/") }],
   };
 
   return (

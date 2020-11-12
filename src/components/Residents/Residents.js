@@ -28,7 +28,6 @@ function Residents({ planetInfo }) {
       "gender",
     ],
     values: values ?? [],
-    actions: [{ label: "Back", action: () => history.push("/") }],
   };
 
   return (

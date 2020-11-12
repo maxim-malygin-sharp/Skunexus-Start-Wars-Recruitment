@@ -8,8 +8,21 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background: #000 url('assets/images/bg.jpg') no-repeat top center;
   background-size: cover;
+  background-attachment: fixed;
   color: #fff;
   font-size: 16px;
+  overflow-y: scroll;
+  scrollbar-color: #103341 rgba(16, 51, 65, .35);
+  scrollbar-width: thin;
+}
+
+body::-webkit-scrollbar {
+  width: 5px;
+  background-color: rgba(16, 51, 65, .35);
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #103341;
 }
 
 a {
