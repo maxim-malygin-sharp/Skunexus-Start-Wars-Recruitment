@@ -1,6 +1,10 @@
+import GridItem from './GridItem';
+
 import './Grid.css';
 
 function Grid({data: {header = [], values = [], actions = []}}) {
+
+
   return (
     <table className='gridTable'>
       <thead>
@@ -11,14 +15,12 @@ function Grid({data: {header = [], values = [], actions = []}}) {
       </thead>
       <tbody>
         {values.map((row, index) => (
-          <tr key={index}>
-            {header.map((colName) => <td key={colName}>{row[colName]}</td>)}
-            {!!actions.length && 
-              <td className='gridActions'>
-                {actions.map(({label, action}) => <button onClick={() => action(row)}>{label}</button>)}
-              </td>
-            }
-          </tr>
+          <GridItem
+            key={index}
+            row={row} 
+            header={header}
+            actions={actions}
+          />
         ))}
       </tbody>
     </table>

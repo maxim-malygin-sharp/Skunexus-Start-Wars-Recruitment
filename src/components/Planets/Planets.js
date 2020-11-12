@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-
+import Header from '../Header';
 import "./Planets.css";
 
 import Grid from "../Grid";
@@ -83,7 +83,7 @@ function Planets({ isResidents, isFilms }) {
   }
   return (
     <div className="App">
-      <h1>Star Wars Planets</h1>
+      <Header>Star Wars Planets</Header>
       <Grid data={data} />
     </div>
   );
