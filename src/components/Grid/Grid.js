@@ -11,7 +11,7 @@ function Grid({data: {header = [], values = [], actions = []}}) {
         <thead>
           <tr>
             {header.map(colName => <th key={colName}>{colName}</th>)}
-            {!!actions.length && <th>Actions</th>}
+            {!!actions.length && <th></th>}
           </tr>
         </thead>
         <tbody>
