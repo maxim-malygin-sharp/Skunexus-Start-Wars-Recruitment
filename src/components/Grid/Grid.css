@@ -6,23 +6,26 @@
 }
 
 .gridTable thead tr th {
-  font-size: 14px;
-  font-weight: 600;
+  font-size: 13px;
+  font-weight: 700;
   text-transform: uppercase;
-  border-bottom: 1px solid #333;
+  border-bottom: 1px solid rgba(57, 109, 121, .16);
   padding: 5px 10px;
-  color: #aaa;
+  color: #3b565d;
+  text-shadow: 0 0 16px rgba(128,180, 194, 0.32);
 }
 
 .gridTable tbody tr td {
   padding: 10px;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 400;
-  border-bottom: 1px solid #333;
+  border-bottom: 1px solid rgba(57, 109, 121, .2);
+  color: #a7a7a7;
+  transition: background-color .25s ease;
 }
 
 .gridTable tbody tr:hover td {
-  background: #f1f1f1;
+  background: rgba(71, 213, 255, .1);
 }
 
 .gridActions button {
