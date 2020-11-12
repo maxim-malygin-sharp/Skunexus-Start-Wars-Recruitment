@@ -44,11 +44,11 @@
   cursor: pointer;
 }
 .actions__btn:hover .actions__btn-icon{
-  color: orange;
+  color: #fff;
 }
 
 .actions__btn-icon {
-  color: #fff;
+  color: #455A64;
   width: 18px;
   height: 24px;
   position: relative;
@@ -64,7 +64,7 @@
 
 .actions__box {
   position: absolute;
-  width: 135px;
+  width: 155px;
   display: flex;
   flex-direction: column;
   top: 30px;
@@ -95,9 +95,11 @@
   padding: 0;
   color: #fff;
   margin: 0 10px 5px 10px;
+  outline: none;
+  font-family: Merriweather, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;;
 }
 
 .actions__link:hover {
   text-decoration: underline;
-  color: orange;
+  color: #38c2e6;
 }

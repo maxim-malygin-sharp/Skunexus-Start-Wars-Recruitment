@@ -4,6 +4,8 @@ import {
   getPlanet,
   getPlanetInfo,
 } from "../../store/planetsReducer/planetsReducer";
+import Header from '../Header';
+import './Planet.css';
 
 import { useGetEntities } from "../../utils/useGetEntities";
 
@@ -28,24 +30,26 @@ function Planet() {
 
   return (
     <div>
-      <h1>{`About ${planetInfo.name}`}</h1>
-      <p>{`rotation_period: ${planetInfo.rotation_period}`}</p>
-      <p>{`orbital_period: ${planetInfo.orbital_period}`}</p>
-      <p>{`diameter: ${planetInfo.diameter}`}</p>
-      <p>{`climate: ${planetInfo.climate}`}</p>
-      <p>{`gravity: ${planetInfo.gravity}`}</p>
-      <p>{`terrain: ${planetInfo.terrain}`}</p>
-      <p>{`surface_water: ${planetInfo.surface_water}`}</p>
-      <p>{`population: ${planetInfo.population}`}</p>
-      <p>
-        {`films: ${films?.map((film) => film.title).join(", ")}` ?? "no films"}
-      </p>
-      <p>
-        {`residents: ${
-          residents?.map((resident) => resident.name).join(", ") ??
-          "no residents"
-        }`}
-      </p>
+      <Header>{`About ${planetInfo.name}`}</Header>
+      <div className="planet">
+        <p>{`rotation_period: ${planetInfo.rotation_period}`}</p>
+        <p>{`orbital_period: ${planetInfo.orbital_period}`}</p>
+        <p>{`diameter: ${planetInfo.diameter}`}</p>
+        <p>{`climate: ${planetInfo.climate}`}</p>
+        <p>{`gravity: ${planetInfo.gravity}`}</p>
+        <p>{`terrain: ${planetInfo.terrain}`}</p>
+        <p>{`surface_water: ${planetInfo.surface_water}`}</p>
+        <p>{`population: ${planetInfo.population}`}</p>
+        <p>
+          {`films: ${films?.map((film) => film.title).join(", ")}` ?? "no films"}
+        </p>
+        <p>
+          {`residents: ${
+            residents?.map((resident) => resident.name).join(", ") ??
+            "no residents"
+          }`}
+        </p>
+      </div>
     </div>
   );
 }

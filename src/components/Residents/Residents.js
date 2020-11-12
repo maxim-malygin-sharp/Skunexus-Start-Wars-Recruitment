@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
+import Header from '../Header';
 
 import "./Residents.css";
 
@@ -45,7 +46,7 @@ function Residents() {
 
   return (
     <div className="App">
-      <h1>{`Resident of ${planetInfo.name}`}</h1>
+      <Header>{`Resident of ${planetInfo.name}`}</Header>
       <Grid data={data} />
     </div>
   );

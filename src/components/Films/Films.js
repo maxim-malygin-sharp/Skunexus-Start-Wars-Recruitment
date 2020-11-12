@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
+import Header from '../Header';
 
 import "./Films.css";
 
@@ -42,7 +43,7 @@ function Films() {
 
   return (
     <div className="App">
-      <h1>{`Films with ${planetInfo.name}`}</h1>
+      <Header>{`Films with ${planetInfo.name}`}</Header>
       <Grid data={data} />
     </div>
   );
