@@ -1,27 +1,22 @@
-import GridItem from './GridItem';
+import GridItem from "./GridItem";
 
-import './Grid.css';
+import "./Grid.css";
 
-function Grid({data: {header = [], values = [], actions = []}}) {
-
-
+function Grid({ data: { header = [], values = [], actions = [] } }) {
   return (
     <div className="container">
-      <table className='gridTable'>
+      <table className="gridTable">
         <thead>
           <tr>
-            {header.map(colName => <th key={colName}>{colName}</th>)}
+            {header.map((colName) => (
+              <th key={colName}>{colName}</th>
+            ))}
             {!!actions.length && <th></th>}
           </tr>
         </thead>
         <tbody>
           {values.map((row, index) => (
-            <GridItem
-              key={index}
-              row={row}
-              header={header}
-              actions={actions}
-            />
+            <GridItem key={index} row={row} header={header} actions={actions} />
           ))}
         </tbody>
       </table>

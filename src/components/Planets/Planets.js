@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Header from '../Header';
-import PlanetModal from '../PlanetModal';
 import { useHistory } from "react-router-dom";
-import Preloader from "../Preloader/Preloader";
 
 import "./Planets.css";
 
+import Header from "../Header";
+import PlanetModal from "../PlanetModal";
+import Preloader from "../Preloader";
 import Grid from "../Grid";
 
 import {
@@ -15,24 +15,25 @@ import {
   setCurrentPlanet,
   getTotalCount,
   getRowsPerPage,
+  getCurrentPage,
+  setCurrentPage,
 } from "../../store/planetsReducer/planetsReducer";
 
 import { getEntityId } from "../../utils/helpers";
-
 
 function Planets({ isResidents, isFilms }) {
   const history = useHistory();
   const dispatch = useDispatch();
   const values = useSelector(getPlanetsList);
-  const [isShowModal, setIsShowModal] = useState(false);
   const totalCount = useSelector(getTotalCount);
   const rowsPerPage = useSelector(getRowsPerPage);
-
-  const [currentPage, setCurrentPage] = useState(1);
-  const firstPage = () => setCurrentPage(1);
-  const nextPage = () => setCurrentPage((prev) => ++prev);
-  const prevPage = () => setCurrentPage((prev) => --prev);
-  const lastPage = () => setCurrentPage(Math.ceil(totalCount / rowsPerPage));
+  const currentPage = useSelector(getCurrentPage);
+  const [isShowModal, setIsShowModal] = useState(false);
+  
+  const firstPage = () => dispatch(setCurrentPage(1));
+  const nextPage = () => dispatch(setCurrentPage(currentPage + 1));
+  const prevPage = () => dispatch(setCurrentPage(currentPage - 1));
+  const lastPage = () => dispatch(setCurrentPage(Math.ceil(totalCount / rowsPerPage)));
 
   useEffect(() => dispatch(getPlanets(currentPage)), [currentPage]);
 
@@ -55,8 +56,7 @@ function Planets({ isResidents, isFilms }) {
 
   const openModal = (planet) => {
     setPlanet(planet);
-    setIsShowModal(true)
-    // history.push("Modal");
+    setIsShowModal(true);
   };
 
   const data = {
@@ -96,13 +96,10 @@ function Planets({ isResidents, isFilms }) {
   return (
     <div className="App">
       <Header>Planet Database</Header>
-      {(values === null) ? <Preloader /> : <Grid data={data} />}
-      
-      {isShowModal &&
-      <PlanetModal 
-        onClose={() => setIsShowModal(false)}
-      />}
-      
+      {values === null ? <Preloader /> : <Grid data={data} />}
+
+      {isShowModal && <PlanetModal onClose={() => setIsShowModal(false)} />}
+
       <button disabled={currentPage === 1} onClick={firstPage}>
         {"<<"}
       </button>

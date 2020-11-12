@@ -1,15 +1,12 @@
-import { useHistory } from "react-router-dom";
-
 import "./Residents.css";
 import Header from "../Header";
 import Grid from "../Grid";
 import Preloader from "../Preloader/Preloader";
 
-import { useGetEntities } from "../../utils/useGetEntities";
-import { withExistPlanetInfo } from "../../utils/withExistPlanetInfo";
+import { useGetEntities } from "../../hooks/useGetEntities";
+import { WithExistPlanetInfo } from "../../utils/WithExistPlanetInfo";
 
 function Residents({ planetInfo }) {
-  const history = useHistory();
   const values = useGetEntities(planetInfo.residents);
 
   const data = {
@@ -35,4 +32,4 @@ function Residents({ planetInfo }) {
   );
 }
 
-export default withExistPlanetInfo(Residents);
+export default WithExistPlanetInfo(Residents);

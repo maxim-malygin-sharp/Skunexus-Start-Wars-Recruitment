@@ -1,15 +1,12 @@
-import { useHistory } from "react-router-dom";
-
 import "./Films.css";
 import Grid from "../Grid";
 import Header from "../Header";
 import Preloader from "../Preloader/Preloader";
 
-import { useGetEntities } from "../../utils/useGetEntities";
-import { withExistPlanetInfo } from "../../utils/withExistPlanetInfo";
+import { useGetEntities } from "../../hooks/useGetEntities";
+import { WithExistPlanetInfo } from "../../utils/WithExistPlanetInfo";
 
 function Films({ planetInfo }) {
-  const history = useHistory();
   const values = useGetEntities(planetInfo.films);
 
   const data = {
@@ -32,4 +29,4 @@ function Films({ planetInfo }) {
   );
 }
 
-export default withExistPlanetInfo(Films);
+export default WithExistPlanetInfo(Films);

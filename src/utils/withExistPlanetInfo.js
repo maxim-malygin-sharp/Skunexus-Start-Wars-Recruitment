@@ -7,11 +7,12 @@ import {
   getPlanetInfo,
 } from "../store/planetsReducer/planetsReducer";
 
-export const withExistPlanetInfo = (Component) => {
+export const WithExistPlanetInfo = (Component) => {
   const IsExistPlanetInfoComponent = (props) => {
     const planetId = useParams().id;
     const dispatch = useDispatch();
     const planetInfo = useSelector(getPlanetInfo);
+    
     if (planetInfo === null) {
       dispatch(getPlanet(planetId));
       return <Preloader />;

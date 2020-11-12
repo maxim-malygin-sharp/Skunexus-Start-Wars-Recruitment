@@ -19,7 +19,7 @@ const Header = (props) => {
       </a>
       {children}
 
-      {!isMainPage && <button onClick={() => handleBack()} className="header__back-link">← Back</button>}
+      {!isMainPage && <button onClick={handleBack} className="header__back-link">← Back</button>}
     </header>
   );
 }

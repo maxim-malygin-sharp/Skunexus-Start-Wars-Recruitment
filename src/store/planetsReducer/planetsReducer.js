@@ -19,6 +19,7 @@ const initialState = {
   currentPlanet: null,
   totalCount: null,
   rowsPerPage: null,
+  currentPage: 1,
 };
 
 const Planets = createSlice({
@@ -27,6 +28,9 @@ const Planets = createSlice({
   reducers: {
     setCurrentPlanet(state, action) {
       state.currentPlanet = action.payload;
+    },
+    setCurrentPage(state, action) {
+      state.currentPage = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -46,6 +50,7 @@ export const getPlanetsList = (state) => state.planets.planets;
 export const getPlanetInfo = (state) => state.planets.currentPlanet;
 export const getTotalCount = (state) => state.planets.totalCount;
 export const getRowsPerPage = (state) => state.planets.rowsPerPage;
+export const getCurrentPage = (state) => state.planets.currentPage;
 
-export const { setCurrentPlanet } = Planets.actions;
+export const { setCurrentPage, setCurrentPlanet } = Planets.actions;
 export default Planets.reducer;
