@@ -29,11 +29,12 @@ function Planets({ isResidents, isFilms }) {
   const rowsPerPage = useSelector(getRowsPerPage);
   const currentPage = useSelector(getCurrentPage);
   const [isShowModal, setIsShowModal] = useState(false);
-  
+
   const firstPage = () => dispatch(setCurrentPage(1));
   const nextPage = () => dispatch(setCurrentPage(currentPage + 1));
   const prevPage = () => dispatch(setCurrentPage(currentPage - 1));
-  const lastPage = () => dispatch(setCurrentPage(Math.ceil(totalCount / rowsPerPage)));
+  const lastPage = () =>
+    dispatch(setCurrentPage(Math.ceil(totalCount / rowsPerPage)));
 
   useEffect(() => dispatch(getPlanets(currentPage)), [currentPage]);
 
@@ -100,23 +101,33 @@ function Planets({ isResidents, isFilms }) {
 
       {isShowModal && <PlanetModal onClose={() => setIsShowModal(false)} />}
 
-      <button disabled={currentPage === 1} onClick={firstPage}>
-        {"<<"}
-      </button>
-      <button disabled={currentPage === 1} onClick={prevPage}>
-        {"<"}
+      <button
+        className="pagination-btn"
+        disabled={currentPage === 1}
+        onClick={firstPage}
+      >
+        &lt;&lt;
       </button>
       <button
+        className="pagination-btn"
+        disabled={currentPage === 1}
+        onClick={prevPage}
+      >
+        &lt;
+      </button>
+      <button
+        className="pagination-btn"
         disabled={(currentPage + 1) * rowsPerPage > totalCount}
         onClick={nextPage}
       >
-        {">"}
+        &gt;
       </button>
       <button
+        className="pagination-btn"
         disabled={(currentPage + 1) * rowsPerPage > totalCount}
         onClick={lastPage}
       >
-        {">>"}
+        &gt;&gt;
       </button>
     </div>
   );
