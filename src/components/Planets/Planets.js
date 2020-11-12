@@ -103,24 +103,12 @@ function Planets({ isResidents, isFilms }) {
         onClose={() => setIsShowModal(false)}
       />}
       
-      <button disabled={currentPage === 1} onClick={firstPage}>
-        {"<<"}
-      </button>
-      <button disabled={currentPage === 1} onClick={prevPage}>
-        {"<"}
-      </button>
-      <button
-        disabled={(currentPage + 1) * rowsPerPage > totalCount}
-        onClick={nextPage}
-      >
-        {">"}
-      </button>
-      <button
-        disabled={(currentPage + 1) * rowsPerPage > totalCount}
-        onClick={lastPage}
-      >
-        {">>"}
-      </button>
+      <button className="pagination-btn" disabled={currentPage === 1} onClick={firstPage}>&lt;&lt;</button>
+      <button className="pagination-btn" disabled={currentPage === 1} onClick={prevPage}>&lt;</button>
+      <button className="pagination-btn" disabled={(currentPage + 1) * rowsPerPage > totalCount}
+          onClick={nextPage}>&gt;</button>
+      <button className="pagination-btn" disabled={(currentPage + 1) * rowsPerPage > totalCount}
+          onClick={lastPage}>&gt;&gt;</button>
     </div>
   );
 }
