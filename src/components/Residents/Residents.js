@@ -41,7 +41,6 @@ function Residents() {
       // "homeworld",
     ],
     values: values ?? [],
-    actions: [{ label: "Back", action: () => history.push("/") }],
   };
 
   return (

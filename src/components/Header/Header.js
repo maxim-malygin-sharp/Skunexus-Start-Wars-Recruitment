@@ -1,7 +1,15 @@
 import React from 'react';
+import { useHistory, useLocation } from "react-router-dom";
 
 const Header = (props) => {
   const { children } = props;
+  const history = useHistory();
+  const location = useLocation();
+  const isMainPage = location.pathname === '/';
+  
+  const handleBack = () => {
+    history.push("/");
+  }
   
   return ( 
     <header className="header">
@@ -10,6 +18,8 @@ const Header = (props) => {
         <span className="logo__text">Star Wars Planet Database</span>
       </a>
       {children}
+
+      {!isMainPage && <button onClick={() => handleBack()} className="header__back-link">← Back</button>}
     </header>
   );
 }
