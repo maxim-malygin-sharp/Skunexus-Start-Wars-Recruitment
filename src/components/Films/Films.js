@@ -1,44 +1,31 @@
-import { useDispatch, useSelector } from "react-redux";
-import { useHistory, useParams } from "react-router-dom";
-import Header from '../Header';
+import { useHistory } from "react-router-dom";
 
 import "./Films.css";
-
 import Grid from "../Grid";
+import Header from "../Header";
+import Preloader from "../Preloader/Preloader";
 
 import { useGetEntities } from "../../utils/useGetEntities";
-import {
-  getPlanet,
-  getPlanetInfo,
-} from "../../store/planetsReducer/planetsReducer";
+import { withExistPlanetInfo } from "../../utils/withExistPlanetInfo";
 
-function Films() {
+function Films({ planetInfo }) {
   const history = useHistory();
-  const dispatch = useDispatch();
-  const planetId = useParams().id;
-  const planetInfo = useSelector(getPlanetInfo);
-  const values = useGetEntities(planetInfo ? planetInfo.films : []);
-
-  if (planetInfo === null) {
-    dispatch(getPlanet(planetId));
-    return null;
-  }
+  const values = useGetEntities(planetInfo.films);
 
   if (values === null && planetInfo.films.length !== 0) {
-    return null;
+    return <Preloader />;
   }
 
   const data = {
     header: [
       "title",
       "episode_id",
-      // "opening_crawl",
+      "opening_crawl",
       "director",
       "producer",
       "release_date",
     ],
     values: values ?? [],
-    actions: [{ label: "Back", action: () => history.push("/") }],
   };
 
   return (
@@ -49,4 +36,4 @@ function Films() {
   );
 }
 
-export default Films;
+export default withExistPlanetInfo(Films);

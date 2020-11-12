@@ -1,3 +1,48 @@
+.container {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
 .planet {
-  margin: 0 20px;
+  max-width: 1000px;
+  margin: 0 auto 40px;
+}
+
+.planet__item {
+  margin: 0;
+  padding: 10px 15px;
+  background-color: rgb(44, 163, 209, .12);
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+}
+
+.planet__item:not(:last-of-type) {
+  margin-bottom: 10px;
+}
+
+.planet__label {
+  font-size: 12px;
+  font-weight: 700;
+  color: #40c1f2;
+  display: block;
+}
+
+.planet__value {
+  display: block;
+  margin-top: 4px;
+}
+
+.planet__tag {
+  display: inline-block;
+  padding: 4px 10px;
+  font-style: normal;
+  background-color: #074f72;
+  border-radius: 6px;
+  font-size: 12px;
+  margin: 3px 0;
+}
+
+.planet__tag:not(:last-of-type) {
+  margin-right: 6px;
 }

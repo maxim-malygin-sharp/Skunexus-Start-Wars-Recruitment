@@ -31,4 +31,8 @@ export const routes = [
     exact: true,
     Component: PlanetModal,
   },
+  {
+    path: "*",
+    Component: () => <div>404 not found</div>,
+  },
 ];
