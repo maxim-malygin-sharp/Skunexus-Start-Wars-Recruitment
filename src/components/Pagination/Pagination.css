@@ -1,0 +1,24 @@
+.pagination-btn {
+  cursor: pointer;
+  margin-top: 15px;
+  margin-bottom: 40px;
+  background-color: rgba(73, 162, 255, .15);
+  color: #fff;
+  border: 0;
+  transition: color .2s ease, background-color .25s ease;
+}
+
+.pagination-btn:focus {
+  outline: 0;
+}
+.pagination-btn:focus:active {
+  background-color: rgba(73, 162, 255, .25);
+}
+
+.pagination-btn[disabled] {
+  color: #243c59;
+}
+
+.pagination-btn:not(:last-of-type) {
+  margin-right: 5px;
+}
