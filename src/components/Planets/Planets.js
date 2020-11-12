@@ -1,6 +1,7 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Header from '../Header';
+import PlanetModal from '../PlanetModal';
 import "./Planets.css";
 
 import Grid from "../Grid";
@@ -18,6 +19,7 @@ function Planets({ isResidents, isFilms }) {
   const history = useHistory();
   const dispatch = useDispatch();
   const values = useSelector(getPlanetsList);
+  const [isShowModal, setIsShowModal] = useState(false);
 
   useEffect(() => values === null && dispatch(getPlanets()), []);
 
@@ -44,7 +46,8 @@ function Planets({ isResidents, isFilms }) {
 
   const openModal = (planet) => {
     setPlanet(planet);
-    history.push("Modal");
+    setIsShowModal(true)
+    // history.push("Modal");
   };
 
   const data = {
@@ -64,7 +67,7 @@ function Planets({ isResidents, isFilms }) {
       { label: "Go to Films", action: redirectFilms },
       { label: "Go to Residents", action: redirectResidents },
       { label: "Go to Planet detail", action: redirectPlanet },
-      { label: "Modal", action: openModal },
+      { label: "Edit", action: openModal },
     ],
   };
   if (isResidents) {
@@ -85,6 +88,10 @@ function Planets({ isResidents, isFilms }) {
     <div className="App">
       <Header>Planet Database</Header>
       <Grid data={data} />
+      {isShowModal &&
+      <PlanetModal 
+        onClose={() => setIsShowModal(false)}
+      />}
     </div>
   );
 }

@@ -1,0 +1,69 @@
+.multiselect {
+  position: relative;
+}
+
+.multiselect__input {
+  display: none;
+}
+
+.multiselect__field {
+  height: 40px;
+  width: 100%;
+  background: none;
+  border-radius: 3px;
+  margin-bottom: 25px;
+  box-shadow: none;
+  border: 1px solid rgb(131 116 134);
+  color: #fff;
+  text-indent: 16px;
+  padding: 0;
+  outline: none;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  text-align: left;
+}
+.multiselect__list {
+  background: #062329;
+  border: 1px solid rgb(131 116 134);
+  position: absolute;
+  top: 40px;
+  left: 0;
+  right: 0;
+  border-radius: 0 0 3px 3px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  text-align: left;
+  display: none;
+}
+
+.multiselect__item {
+  padding: 5px 0 5px 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: all 350ms ease;
+}
+
+.multiselect__item:hover {
+  background: rgba(255, 255, 255, .1);
+}
+
+.multiselect.active .multiselect__list {
+  display: block;
+}
+
+.multiselect__icon {
+  width: 15px;
+  height: 15px;
+  margin: 0 10px 0 5px;
+  display: block;
+  color: #1B5E20;
+}
+
+.multiselect__icon svg {
+  width: 100%;
+  height: 100%;
+  fill: currentColor;
+}
