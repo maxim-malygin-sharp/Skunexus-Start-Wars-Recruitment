@@ -12,10 +12,6 @@ function Residents({ planetInfo }) {
   const history = useHistory();
   const values = useGetEntities(planetInfo.residents);
 
-  if (values === null && planetInfo.residents.length !== 0) {
-    return <Preloader />;
-  }
-
   const data = {
     header: [
       "name",
@@ -33,7 +29,8 @@ function Residents({ planetInfo }) {
   return (
     <div className="App">
       <Header>{`Resident of ${planetInfo.name}`}</Header>
-      <Grid data={data} />
+      {(values === null && planetInfo.residents.length !== 0) ? <Preloader /> : <Grid data={data} />}
+      
     </div>
   );
 }

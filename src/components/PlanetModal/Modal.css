@@ -6,7 +6,7 @@
   bottom: 0;
   display: flex;
   padding: 30px 0;
-  background: #42626b6b;
+  background-color: rgba(0, 0, 0, .79);
   z-index: 1000;
 }
 

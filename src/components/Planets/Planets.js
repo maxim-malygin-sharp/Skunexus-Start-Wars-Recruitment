@@ -36,10 +36,6 @@ function Planets({ isResidents, isFilms }) {
 
   useEffect(() => dispatch(getPlanets(currentPage)), [currentPage]);
 
-  if (values === null) {
-    return <Preloader />;
-  }
-
   const setPlanet = (planet) => dispatch(setCurrentPlanet(planet));
 
   const redirectFilms = (planet) => {
@@ -100,7 +96,7 @@ function Planets({ isResidents, isFilms }) {
   return (
     <div className="App">
       <Header>Planet Database</Header>
-      <Grid data={data} />
+      {(values === null) ? <Preloader /> : <Grid data={data} />}
       
       {isShowModal &&
       <PlanetModal 

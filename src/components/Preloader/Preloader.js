@@ -1,4 +1,6 @@
+import "./Preloader.css";
+
 const Preloader = () => {
-  return <div>...loading</div>;
+  return <div className="preloader">Loading...</div>;
 };
 export default Preloader;

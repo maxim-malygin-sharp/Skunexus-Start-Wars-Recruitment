@@ -12,10 +12,6 @@ function Films({ planetInfo }) {
   const history = useHistory();
   const values = useGetEntities(planetInfo.films);
 
-  if (values === null && planetInfo.films.length !== 0) {
-    return <Preloader />;
-  }
-
   const data = {
     header: [
       "title",
@@ -31,7 +27,7 @@ function Films({ planetInfo }) {
   return (
     <div className="App">
       <Header>{`Films with ${planetInfo.name}`}</Header>
-      <Grid data={data} />
+      {(values === null && planetInfo.films.length !== 0) ? <Preloader /> : <Grid data={data} />}
     </div>
   );
 }
