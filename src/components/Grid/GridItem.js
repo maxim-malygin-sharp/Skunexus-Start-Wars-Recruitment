@@ -1,11 +1,19 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import useOnClickOutside from '../../hooks/useOnClickOutside';
 
 const GridItem = ({header, actions, row }) => {
   const [isShowActions, setIsShowActions] = useState(false);
+  const [animation, setAnimation] = useState(false);
   const menuRef = useRef(null);
 
   useOnClickOutside(menuRef, () => setIsShowActions(false));
+  
+  useEffect(() => {
+    if (isShowActions) {
+      setAnimation(true);
+    }
+  }, [isShowActions])
+  
 
   return (
     <tr>
@@ -23,7 +31,7 @@ const GridItem = ({header, actions, row }) => {
               </span>
             </button>
             {isShowActions &&
-              <div className={`actions__box ${isShowActions ? 'shown':''}`} ref={menuRef}>
+              <div className={`actions__box ${animation ? 'shown':''}`} ref={menuRef}>
                 {actions.map(({label, action}) => <button key={label} className="actions__link" onClick={() => action(row)}>{label}</button>)}
               </div>}
           </div>

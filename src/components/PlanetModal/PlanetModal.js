@@ -1,6 +1,8 @@
 import { useForm } from "react-hook-form";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
+import './Modal.css';
+import Header from '../Header';
 
 import { getPlanetInfo } from "../../store/planetsReducer/planetsReducer";
 
@@ -28,6 +30,10 @@ function PlanetModal() {
     alert(Math.ceil(Math.random()) ? "Success" : "Error");
   };
   return (
+    <>
+    <Header>Planet Database</Header>
+    <div class="modal">
+      <div className="modal__box">
     <form
       onSubmit={handleSubmit(onSubmit)}
       style={{ display: "flex", flexDirection: "column" }}
@@ -80,8 +86,11 @@ function PlanetModal() {
         required
         placeholder="Enter planet's surface_water"
       />
-      <button type="submit">Submit</button>
+      <button type="submit" class="modal__btn">Submit</button>
     </form>
+    </div>
+    </div>
+    </>
   );
 }
 
