@@ -1,4 +1,52 @@
 .header {
-  background: #000;
   color: #fff;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  height: 80px;
+  padding: 0 30px;
+  background-color: #000;
+  background-image: url('../../assets/images/admin-avatar.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: auto 100%;
+  margin-bottom: 40px;
+  box-shadow: 0 0 200px 0 rgba(28, 158, 233, .1);
+  position: relative;
+}
+
+.header:after { /* header bottom border */
+  content: '';
+  display: block;
+  height: 1px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to right, #000 0%,rgba(255,255,255, 1) 50%,#000 100%);
+}
+
+.header__logo {
+  display: inline-block;
+  margin-right: 30px;
+}
+
+.logo {
+  font-size: 0;
+  display: block;
+  width: 90px;
+  height: 40px;
+}
+
+.logo__image {
+  
+}
+
+.logo__text {
+  display: block;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
 }
