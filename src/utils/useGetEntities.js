@@ -10,11 +10,13 @@ export const useGetEntities = (listUrls) => {
       const response = await API.getEntity(url);
       entities.push(response.data);
     }
-    values === null && listUrls.length !== 0 && setValues(entities);
+    setValues(entities);
   };
 
   useEffect(() => {
-    getListEntities();
+    if (values === null && listUrls.length !== 0) {
+      getListEntities();
+    }
   }, [listUrls]);
 
   return values;

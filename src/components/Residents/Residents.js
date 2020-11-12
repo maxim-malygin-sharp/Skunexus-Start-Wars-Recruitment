@@ -1,31 +1,19 @@
-import { useDispatch, useSelector } from "react-redux";
-import Header from '../Header';
+import { useHistory } from "react-router-dom";
 
 import "./Residents.css";
-
+import Header from "../Header";
 import Grid from "../Grid";
+import Preloader from "../Preloader/Preloader";
 
 import { useGetEntities } from "../../utils/useGetEntities";
-import {
-  getPlanet,
-  getPlanetInfo,
-} from "../../store/planetsReducer/planetsReducer";
-import { useHistory, useParams } from "react-router-dom";
+import { withExistPlanetInfo } from "../../utils/withExistPlanetInfo";
 
-function Residents() {
+function Residents({ planetInfo }) {
   const history = useHistory();
-  const dispatch = useDispatch();
-  const planetId = useParams().id;
-  const planetInfo = useSelector(getPlanetInfo);
-  const values = useGetEntities(planetInfo ? planetInfo.residents : []);
-
-  if (planetInfo === null) {
-    dispatch(getPlanet(planetId));
-    return null;
-  }
+  const values = useGetEntities(planetInfo.residents);
 
   if (values === null && planetInfo.residents.length !== 0) {
-    return null;
+    return <Preloader />;
   }
 
   const data = {
@@ -38,7 +26,6 @@ function Residents() {
       "eye_color",
       "birth_year",
       "gender",
-      // "homeworld",
     ],
     values: values ?? [],
     actions: [{ label: "Back", action: () => history.push("/") }],
@@ -52,4 +39,4 @@ function Residents() {
   );
 }
 
-export default Residents;
+export default withExistPlanetInfo(Residents);

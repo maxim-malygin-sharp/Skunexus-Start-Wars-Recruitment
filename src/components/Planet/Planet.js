@@ -1,31 +1,20 @@
-import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
-import {
-  getPlanet,
-  getPlanetInfo,
-} from "../../store/planetsReducer/planetsReducer";
-import Header from '../Header';
-import './Planet.css';
+import "./Planet.css";
+
+import Header from "../Header";
+import Preloader from "../Preloader/Preloader";
 
 import { useGetEntities } from "../../utils/useGetEntities";
+import { withExistPlanetInfo } from "../../utils/withExistPlanetInfo";
 
-function Planet() {
-  const dispatch = useDispatch();
-  const planetId = useParams().id;
-  const planetInfo = useSelector(getPlanetInfo);
+function Planet({ planetInfo }) {
   const residents = useGetEntities(planetInfo ? planetInfo.residents : []);
   const films = useGetEntities(planetInfo ? planetInfo.films : []);
-
-  if (planetInfo === null) {
-    dispatch(getPlanet(planetId));
-    return null;
-  }
 
   if (
     (residents === null || films === null) &&
     planetInfo.residents.length !== 0
   ) {
-    return null;
+    return <Preloader />;
   }
 
   return (
@@ -41,7 +30,8 @@ function Planet() {
         <p>{`surface_water: ${planetInfo.surface_water}`}</p>
         <p>{`population: ${planetInfo.population}`}</p>
         <p>
-          {`films: ${films?.map((film) => film.title).join(", ")}` ?? "no films"}
+          {`films: ${films?.map((film) => film.title).join(", ")}` ??
+            "no films"}
         </p>
         <p>
           {`residents: ${
@@ -54,4 +44,4 @@ function Planet() {
   );
 }
 
-export default Planet;
+export default withExistPlanetInfo(Planet);

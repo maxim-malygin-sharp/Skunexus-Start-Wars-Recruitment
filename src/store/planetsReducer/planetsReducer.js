@@ -1,9 +1,5 @@
 import { PlanetsAPI } from "../../network/api";
-import {
-  createAsyncThunk,
-  createSelector,
-  createSlice,
-} from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 export const getPlanets = createAsyncThunk(
   "planets/getPlanets",
@@ -47,10 +43,7 @@ const Planets = createSlice({
 });
 
 export const getPlanetsList = (state) => state.planets.planets;
-export const getPlanetInfo = createSelector(
-  (state) => state.planets.currentPlanet,
-  (currentPlanet) => currentPlanet
-);
+export const getPlanetInfo = (state) => state.planets.currentPlanet;
 export const getTotalCount = (state) => state.planets.totalCount;
 export const getRowsPerPage = (state) => state.planets.rowsPerPage;
 

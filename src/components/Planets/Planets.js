@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
+
 import Header from "../Header";
+import Preloader from "../Preloader/Preloader";
+
 import "./Planets.css";
 
 import Grid from "../Grid";
@@ -12,8 +16,9 @@ import {
   getTotalCount,
   getRowsPerPage,
 } from "../../store/planetsReducer/planetsReducer";
-import { useHistory } from "react-router-dom";
+
 import { getEntityId } from "../../utils/helpers";
+
 
 function Planets({ isResidents, isFilms }) {
   const history = useHistory();
@@ -31,7 +36,7 @@ function Planets({ isResidents, isFilms }) {
   useEffect(() => dispatch(getPlanets(currentPage)), [currentPage]);
 
   if (values === null) {
-    return null;
+    return <Preloader />;
   }
 
   const setPlanet = (planet) => dispatch(setCurrentPlanet(planet));
