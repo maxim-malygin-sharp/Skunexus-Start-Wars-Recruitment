@@ -83,7 +83,7 @@ function Planets({ isResidents, isFilms }) {
   }
   return (
     <div className="App">
-      <Header>Star Wars Planets</Header>
+      <Header>Planet Database</Header>
       <Grid data={data} />
     </div>
   );
