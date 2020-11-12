@@ -14,10 +14,23 @@ const GridItem = ({header, actions, row }) => {
     }
   }, [isShowActions])
   
+  const handlePlanetClick = (e, row) => {
+    e.preventDefault();
+    const actionFn = actions.filter(item => item.label === 'Go to Planet detail')[0];
+    if (actionFn) actionFn.action(row)
+  }
 
   return (
     <tr>
-      {header.map((colName) => <td key={colName}>{row[colName]}</td>)}
+      {header.map((colName) => {
+        const hasGoPlanetAction = actions.filter(item => item.label === 'Go to Planet detail').length;
+        if (colName === 'name' && hasGoPlanetAction) {
+          return <td key={colName}>
+            <a href="#" title="Go to Planet detail" onClick={e => handlePlanetClick(e, row)}>{row[colName]}</a>
+          </td>
+        }
+        return <td key={colName}>{colName}{row[colName]}</td>
+      })}
       {!!actions.length && 
         <td className='gridActions'>
           <div className="actions">
