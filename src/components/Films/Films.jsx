@@ -1,4 +1,5 @@
-import React from 'react';
+import React from "react";
+import PropTypes from "prop-types";
 
 import "./Films.css";
 import Grid from "../Grid";
@@ -26,9 +27,20 @@ function Films({ planetInfo }) {
   return (
     <div className="App">
       <Header>{`Films with ${planetInfo.name}`}</Header>
-      {(values === null && planetInfo.films.length !== 0) ? <Preloader /> : <Grid data={data} />}
+      {values === null && planetInfo.films.length !== 0 ? (
+        <Preloader />
+      ) : (
+        <Grid data={data} />
+      )}
     </div>
   );
 }
 
 export default WithExistPlanetInfo(Films);
+
+Films.propTypes = {
+  planetInfo: PropTypes.shape({
+    films: PropTypes.arrayOf(PropTypes.string).isRequired,
+    name: PropTypes.string.isRequired,
+  }).isRequired,
+};

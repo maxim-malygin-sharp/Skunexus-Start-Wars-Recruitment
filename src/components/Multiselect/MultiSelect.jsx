@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import PropTypes from "prop-types";
 import "./Multiselect.css";
 import useOnClickOutside from "../../hooks/useOnClickOutside";
 import { fieldTypes } from "./fieldTypes";
@@ -8,7 +9,7 @@ const MultiSelect = (props) => {
   const [items, setItems] = useState([]);
   const [val, setValue] = useState("");
   const el = useRef(null);
-  const { register, placeholder, value, onChange } = props;
+  const { register, placeholder, value } = props;
 
   useOnClickOutside(el, () => setActive(false));
 
@@ -61,7 +62,6 @@ const MultiSelect = (props) => {
         placeholder={placeholder}
         required
         value={val}
-        onChange={onChange}
         ref={register}
       />
       <div className="multiselect__field" onClick={() => setActive(true)}>
@@ -73,3 +73,9 @@ const MultiSelect = (props) => {
 };
 
 export default MultiSelect;
+
+MultiSelect.propTypes = {
+  placeholder: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
+  register: PropTypes.func.isRequired,
+};

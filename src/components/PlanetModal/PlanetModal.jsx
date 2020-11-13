@@ -1,6 +1,7 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
 import { useSelector } from "react-redux";
+import PropTypes from "prop-types";
 
 import "./Modal.css";
 import MultiSelect from "../Multiselect";
@@ -115,3 +116,7 @@ function PlanetModal({ onClose }) {
 }
 
 export default PlanetModal;
+
+PlanetModal.propTypes = {
+  onClose: PropTypes.func.isRequired,
+};

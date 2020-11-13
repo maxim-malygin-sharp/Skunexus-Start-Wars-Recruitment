@@ -1,4 +1,5 @@
-import React from 'react';
+import React from "react";
+import PropTypes from "prop-types";
 import "./Planet.css";
 
 import Header from "../Header";
@@ -50,8 +51,8 @@ function Planet({ planetInfo }) {
       ) : (
         <section className="container">
           <div className="planet">
-            {data.map((el) => (
-              <p className="planet__item">
+            {data.map((el, index) => (
+              <p className="planet__item" key={el.label + index}>
                 <span className="planet__label">{el.label}</span>
                 <span className="planet__value">{el.value}</span>
               </p>
@@ -64,3 +65,19 @@ function Planet({ planetInfo }) {
 }
 
 export default WithExistPlanetInfo(Planet);
+
+Planet.propTypes = {
+  planetInfo: PropTypes.shape({
+    films: PropTypes.arrayOf(PropTypes.string).isRequired,
+    residents: PropTypes.arrayOf(PropTypes.string).isRequired,
+    name: PropTypes.string.isRequired,
+    rotation_period: PropTypes.string.isRequired,
+    orbital_period: PropTypes.string.isRequired,
+    diameter: PropTypes.string.isRequired,
+    climate: PropTypes.string.isRequired,
+    gravity: PropTypes.string.isRequired,
+    terrain: PropTypes.string.isRequired,
+    surface_water: PropTypes.string.isRequired,
+    population: PropTypes.string.isRequired,
+  }).isRequired,
+};

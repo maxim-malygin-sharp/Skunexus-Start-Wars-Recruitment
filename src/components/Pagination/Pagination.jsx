@@ -1,12 +1,13 @@
-import React from 'react';
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import PropTypes from "prop-types";
+import "./Pagination.css";
+
 import {
   getTotalCount,
   getRowsPerPage,
   setCurrentPage,
 } from "../../store/planetsReducer/planetsReducer";
-
-import "./Pagination.css";
 
 const Pagination = ({ currentPage }) => {
   const dispatch = useDispatch();
@@ -55,3 +56,7 @@ const Pagination = ({ currentPage }) => {
 };
 
 export default Pagination;
+
+Pagination.propTypes = {
+  currentPage: PropTypes.number.isRequired,
+};

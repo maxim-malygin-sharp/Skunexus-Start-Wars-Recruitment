@@ -1,5 +1,6 @@
 import React from 'react';
 import { useHistory, useLocation } from "react-router-dom";
+import PropTypes from "prop-types";
 
 const Header = (props) => {
   const { children } = props;
@@ -25,3 +26,7 @@ const Header = (props) => {
 }
  
 export default Header;
+
+Header.propTypes = {
+  children: PropTypes.string.isRequired,
+};

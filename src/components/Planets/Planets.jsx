@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-
+import PropTypes from "prop-types";
 import "./Planets.css";
 
 import Header from "../Header";
@@ -25,6 +25,7 @@ function Planets({ isResidents, isFilms }) {
   const values = useSelector(getPlanetsList);
   const currentPage = useSelector(getCurrentPage);
   const [isShowModal, setIsShowModal] = useState(false);
+  const closeModal = () => setIsShowModal(false)
 
   useEffect(() => dispatch(getPlanets(currentPage)), [currentPage]);
 
@@ -89,7 +90,7 @@ function Planets({ isResidents, isFilms }) {
       <Header>Planet Database</Header>
       {values === null ? <Preloader /> : <Grid data={data} />}
 
-      {isShowModal && <PlanetModal onClose={() => setIsShowModal(false)} />}
+      {isShowModal && <PlanetModal onClose={closeModal} />}
 
       <Pagination currentPage={currentPage} />
     </div>
@@ -97,3 +98,8 @@ function Planets({ isResidents, isFilms }) {
 }
 
 export default Planets;
+
+Planets.propTypes = {
+  isResidents: PropTypes.bool,
+  isFilms: PropTypes.bool,
+};

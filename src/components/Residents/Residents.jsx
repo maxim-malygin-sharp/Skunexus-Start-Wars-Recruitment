@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from "prop-types";
 import "./Residents.css";
 import Header from "../Header";
 import Grid from "../Grid";
@@ -34,3 +35,10 @@ function Residents({ planetInfo }) {
 }
 
 export default WithExistPlanetInfo(Residents);
+
+Residents.propTypes = {
+  planetInfo: PropTypes.shape({
+    residents: PropTypes.arrayOf(PropTypes.string).isRequired,
+    name: PropTypes.string.isRequired,
+  }).isRequired,
+};

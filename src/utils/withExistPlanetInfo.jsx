@@ -1,6 +1,7 @@
 import React from 'react' 
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import PropTypes from "prop-types";
 import Preloader from "../components/Preloader/Preloader";
 
 import {
@@ -22,4 +23,8 @@ export const WithExistPlanetInfo = (Component) => {
   };
 
   return IsExistPlanetInfoComponent;
+};
+
+WithExistPlanetInfo.propTypes = {
+  Component: PropTypes.elementType.isRequired,
 };
