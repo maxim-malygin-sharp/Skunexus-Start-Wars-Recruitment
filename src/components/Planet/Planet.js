@@ -4,7 +4,7 @@ import Header from "../Header";
 import Preloader from "../Preloader/Preloader";
 
 import { useGetEntities } from "../../hooks/useGetEntities";
-import { WithExistPlanetInfo } from "../../utils/WithExistPlanetInfo";
+import { WithExistPlanetInfo } from "../../utils/withExistPlanetInfo";
 
 function Planet({ planetInfo }) {
   const films = useGetEntities(planetInfo.films);

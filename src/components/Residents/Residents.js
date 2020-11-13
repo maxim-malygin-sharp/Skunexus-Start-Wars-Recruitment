@@ -4,7 +4,7 @@ import Grid from "../Grid";
 import Preloader from "../Preloader/Preloader";
 
 import { useGetEntities } from "../../hooks/useGetEntities";
-import { WithExistPlanetInfo } from "../../utils/WithExistPlanetInfo";
+import { WithExistPlanetInfo } from "../../utils/withExistPlanetInfo";
 
 function Residents({ planetInfo }) {
   const values = useGetEntities(planetInfo.residents);
