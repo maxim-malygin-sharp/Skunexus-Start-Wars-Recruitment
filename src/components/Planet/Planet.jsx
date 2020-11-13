@@ -1,3 +1,4 @@
+import React from 'react';
 import "./Planet.css";
 
 import Header from "../Header";

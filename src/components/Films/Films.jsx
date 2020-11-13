@@ -1,3 +1,5 @@
+import React from 'react';
+
 import "./Films.css";
 import Grid from "../Grid";
 import Header from "../Header";

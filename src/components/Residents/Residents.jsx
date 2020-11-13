@@ -1,3 +1,4 @@
+import React from 'react';
 import "./Residents.css";
 import Header from "../Header";
 import Grid from "../Grid";
