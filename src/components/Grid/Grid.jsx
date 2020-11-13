@@ -1,5 +1,6 @@
-import React from 'react';
+import React from "react";
 import GridItem from "./GridItem";
+import PropTypes from "prop-types";
 
 import "./Grid.css";
 
@@ -26,3 +27,13 @@ function Grid({ data: { header = [], values = [], actions = [] } }) {
 }
 
 export default Grid;
+
+Grid.propTypes = {
+  data: PropTypes.shape({
+    header: PropTypes.arrayOf(PropTypes.string),
+    values: PropTypes.arrayOf(
+      PropTypes.oneOfType([PropTypes.string, PropTypes.object])
+    ),
+    actions: PropTypes.arrayOf(PropTypes.object),
+  }).isRequired,
+};

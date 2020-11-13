@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import PropTypes from "prop-types";
 import useOnClickOutside from "../../hooks/useOnClickOutside";
 
 const GridItem = ({ header, actions, row }) => {
@@ -80,3 +81,9 @@ const GridItem = ({ header, actions, row }) => {
 };
 
 export default GridItem;
+
+GridItem.propTypes = {
+  header: PropTypes.arrayOf(PropTypes.string),
+  row: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+  actions: PropTypes.arrayOf(PropTypes.object),
+};
